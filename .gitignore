@@ -4,8 +4,11 @@ __pycache__/
 *.py[cod]
 .env
 .env.*
-db.sqlite3
+# Se incluye db.sqlite3 con datos de demostracion
+# No se incluyen archivos temporales de SQLite
 db.sqlite3-journal
+db.sqlite3-wal
+db.sqlite3-shm
 .vscode/
 media/*
 !media/.gitkeep

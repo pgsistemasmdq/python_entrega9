@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html lang="es-ar">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Blog de Carlos Mendoza{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'posts/css/estilos.css' %}">
+</head>
+<body>
+    <header class="cabecera">
+        <div class="contenedor encabezado">
+            <a class="marca" href="{% url 'posts:inicio' %}">Blog de Carlos Mendoza</a>
+            <nav aria-label="Navegación principal">
+                <a href="{% url 'posts:inicio' %}">Inicio</a>
+                <a href="{% url 'posts:lista_posts' %}">Publicaciones</a>
+                <a href="{% url 'posts:acerca' %}">Acerca de</a>
+                {% block nav_extra %}{% endblock %}
+            </nav>
+        </div>
+    </header>
+    <main class="contenedor principal">
+        {% if messages %}
+            {% for message in messages %}<p class="mensaje">{{ message }}</p>{% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="pie"><div class="contenedor">Curso Python · Blog con Django</div></footer>
+</body>
+</html>

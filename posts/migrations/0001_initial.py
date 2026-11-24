@@ -1,0 +1,20 @@
+# Migración inicial del modelo Post, módulo 9.
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+    initial = True
+    dependencies = []
+    operations = [
+        migrations.CreateModel(
+            name="Post",
+            fields=[
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("titulo", models.CharField(max_length=200)),
+                ("contenido", models.TextField()),
+                ("autor", models.CharField(max_length=120)),
+                ("fecha_creacion", models.DateTimeField(auto_now_add=True)),
+                ("estado", models.CharField(choices=[("borrador", "Borrador"), ("publicado", "Publicado"), ("archivado", "Archivado")], default="borrador", max_length=10)),
+            ],
+        ),
+    ]

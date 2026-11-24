@@ -1,0 +1,15 @@
+{% extends 'posts/base.html' %}
+{% block title %}Publicaciones | Blog de Carlos Mendoza{% endblock %}
+{% block content %}
+<h1>Publicaciones</h1>
+<p>Artículos publicados, cargados desde la base de datos SQLite.</p>
+{% for post in posts %}
+    <article class="tarjeta">
+        <h2>{{ post.titulo }}</h2>
+        <p class="meta">{{ post.autor }} · {{ post.fecha_creacion|date:"d/m/Y H:i" }}</p>
+        <p>{{ post.contenido|linebreaksbr }}</p>
+    </article>
+{% empty %}
+    <section class="tarjeta"><p>No hay publicaciones en estado «Publicado».</p></section>
+{% endfor %}
+{% endblock %}
